@@ -3,9 +3,10 @@ import { createContext, useContext, useState, useEffect } from "react";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-
+    
     const API = import.meta.env.VITE_APP_URL_API;
 
+    // ================= STATE =================
     const [token, setToken] = useState(localStorage.getItem("token") || "");
     const [user, setUser] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -13,27 +14,26 @@ export const AuthProvider = ({ children }) => {
 
     const authorizationToken = token ? `Bearer ${token}` : "";
 
-    // STORE TOKEN
+    const isLoggedIn = !!token;
+    console.log("isLoggedIN", isLoggedIn);
+
+    // ================= STORE TOKEN =================
     const storeTokenInLS = (serverToken) => {
         if (!serverToken) return;
         localStorage.setItem("token", serverToken);
         setToken(serverToken);
     };
 
-    // LOGOUT
+    // ================= LOGOUT =================
     const LogoutUser = () => {
         localStorage.removeItem("token");
         setToken("");
         setUser(null);
     };
 
-    const isLoggedIn = !!token;
-    console.log("isLoggedIN", isLoggedIn);
-
-    // USER AUTH CHECK
+    // ================= USER AUTH CHECK =================
     const userAuthentication = async () => {
         try {
-
             if (!token) {
                 setIsLoading(false);
                 return;
@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }) => {
             const response = await fetch(`${API}/api/auth/user`, {
                 method: "GET",
                 headers: {
-                    Authorization: `Bearer ${token}`,
+                    Authorization: authorizationToken,
                     "Content-Type": "application/json",
                 },
             });
@@ -54,15 +54,14 @@ export const AuthProvider = ({ children }) => {
             } else {
                 LogoutUser();
             }
-
         } catch (error) {
-            console.log("User auth error:", error);
+            console.error("User auth error:", error);
         } finally {
             setIsLoading(false);
         }
     };
 
-    // SERVICES FETCH
+    // ================= SERVICES FETCH =================
     const getServices = async () => {
         try {
             const response = await fetch(`${API}/api/data/service`);
@@ -71,12 +70,12 @@ export const AuthProvider = ({ children }) => {
                 const data = await response.json();
                 setServices(data);
             }
-
         } catch (error) {
-            console.log("Service error:", error);
+            console.error("Service fetch error:", error);
         }
     };
 
+    // ================= USE EFFECTS =================
     useEffect(() => {
         userAuthentication();
     }, [token]);
@@ -85,6 +84,7 @@ export const AuthProvider = ({ children }) => {
         getServices();
     }, []);
 
+    // ================= CONTEXT VALUE =================
     return (
         <AuthContext.Provider
             value={{
@@ -103,4 +103,123 @@ export const AuthProvider = ({ children }) => {
     );
 };
 
-export const useAuth = () => useContext(AuthContext);
+
+export const useAuth = () => {
+    return useContext(AuthContext);
+};
+
+
+
+
+
+
+
+
+
+
+// import { createContext, useContext, useState, useEffect } from "react";
+
+// export const AuthContext = createContext();
+
+// export const AuthProvider = ({ children }) => {
+
+//     const API = import.meta.env.VITE_APP_URL_API;
+
+//     const [token, setToken] = useState(localStorage.getItem("token") || "");
+//     const [user, setUser] = useState(null);
+//     const [isLoading, setIsLoading] = useState(true);
+//     const [services, setServices] = useState([]);
+
+//     const authorizationToken = token ? `Bearer ${token}` : "";
+
+//     // STORE TOKEN
+//     const storeTokenInLS = (serverToken) => {
+//         if (!serverToken) return;
+//         localStorage.setItem("token", serverToken);
+//         setToken(serverToken);
+//     };
+
+//     // LOGOUT
+//     const LogoutUser = () => {
+//         localStorage.removeItem("token");
+//         setToken("");
+//         setUser(null);
+//     };
+
+//     const isLoggedIn = !!token;
+//     console.log("isLoggedIN", isLoggedIn);
+
+//     // USER AUTH CHECK
+//     const userAuthentication = async () => {
+//         try {
+
+//             if (!token) {
+//                 setIsLoading(false);
+//                 return;
+//             }
+
+//             const response = await fetch(`${API}/api/auth/user`, {
+//                 method: "GET",
+//                 headers: {
+//                     Authorization: `Bearer ${token}`,
+//                     "Content-Type": "application/json",
+//                 },
+//             });
+
+//             const data = await response.json();
+
+//             if (response.ok) {
+//                 setUser(data.userdata);
+//             } else {
+//                 LogoutUser();
+//             }
+
+//         } catch (error) {
+//             console.log("User auth error:", error);
+//         } finally {
+//             setIsLoading(false);
+//         }
+//     };
+
+//     // SERVICES FETCH
+//     const getServices = async () => {
+//         try {
+//             const response = await fetch(`${API}/api/data/service`);
+
+//             if (response.ok) {
+//                 const data = await response.json();
+//                 setServices(data);
+//             }
+
+//         } catch (error) {
+//             console.log("Service error:", error);
+//         }
+//     };
+
+//     useEffect(() => {
+//         userAuthentication();
+//     }, [token]);
+
+//     useEffect(() => {
+//         getServices();
+//     }, []);
+
+//     return (
+//         <AuthContext.Provider
+//             value={{
+//                 isLoggedIn,
+//                 storeTokenInLS,
+//                 LogoutUser,
+//                 user,
+//                 services,
+//                 authorizationToken,
+//                 isLoading,
+//                 API,
+//             }}
+//         >
+//             {children}
+//         </AuthContext.Provider>
+//     );
+// };
+
+// export const useAuth = () => useContext(AuthContext);

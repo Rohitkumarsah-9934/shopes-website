@@ -26,7 +26,7 @@ const register = async (req, res) => {
         });
 
         res.status(201).json({
-            msg: "Registation Successfully ", token: await userCreated.generateToken(), userId: userCreated._id.toString(),
+            msg: userCreated, token: await userCreated.generateToken(), userId: userCreated._id.toString(),
         });
     } catch (error) {
         // res.status(500).json("internal server error");
@@ -50,7 +50,7 @@ const login = async (req, res) => {
 
         if (user) {
             res.status(200).json({
-                msg: "login Successfully",
+                msg: userExist,
                 token: await userExist.generateToken(),
                 userId: userExist._id.toString(),
             });

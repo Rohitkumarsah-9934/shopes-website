@@ -9,12 +9,12 @@ const AdminLayout = () => {
     const { user, isLoading } = useAuth();
     console.log("Admin Layout:", user);
 
-    // Loading state
+  
     if (isLoading) {
         return <h1>Loading...</h1>;
     }
 
-    // User null/undefined safe check
+   
     if (!user || !user.isAdmin) {
         return <Navigate to="/" />;
     }

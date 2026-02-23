@@ -3,7 +3,7 @@ import Img1 from "../../assets/shirt/shirt.png";
 import Img2 from "../../assets/shirt/shirt2.png";
 import Img3 from "../../assets/shirt/shirt3.png";
 import { FaStar } from "react-icons/fa";
-
+import { Link } from "react-router-dom";
 const ProductsData = [
   {
     id: 1,
@@ -76,7 +76,7 @@ const TopProducts = ({ handleOrderPopup }) => {
                   className="bg-primary hover:scale-105 duration-300 text-white py-1 px-4 rounded-full mt-4 group-hover:bg-white group-hover:text-primary"
                   onClick={handleOrderPopup}
                 >
-                  Order Now
+                  <Link to={"./cloth"}>Order Now</Link>
                 </button>
               </div>
             </div>

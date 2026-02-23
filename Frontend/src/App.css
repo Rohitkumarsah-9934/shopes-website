@@ -7,7 +7,10 @@
 .font-poppins {
     font-family: 'Poppins', sans-serif;
 }
-
+/* *{
+    margin: 0;
+    padding: 0;
+} */
 
 .marquee-inner {
     animation: marqueeScroll linear infinite;
@@ -244,5 +247,293 @@
 
     .btn {
         width: 100%;
+    }
+}
+
+/* ===== Admin Section ===== */
+.admin-section {
+    padding: 20px;
+    background: #f9f9f9;
+}
+
+/* Container */
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Heading */
+.admin-heading {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* ===== Table Styling ===== */
+.admin-users table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-users th,
+.admin-users td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.admin-users th {
+    background: #222;
+    color: white;
+}
+
+/* Buttons */
+.btn-update {
+    background: #28a745;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-delete {
+    background: #dc3545;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-update:hover {
+    background: #218838;
+}
+
+.btn-delete:hover {
+    background: #c82333;
+}
+
+/* ===== Responsive Design ===== */
+
+/* Tablet */
+@media (max-width: 768px) {
+    .admin-users table {
+        font-size: 14px;
+    }
+}
+
+/* Mobile View */
+@media (max-width: 600px) {
+
+    .admin-users table,
+    .admin-users thead,
+    .admin-users tbody,
+    .admin-users th,
+    .admin-users td,
+    .admin-users tr {
+        display: block;
+        width: 100%;
+    }
+
+    .admin-users thead {
+        display: none;
+    }
+
+    .admin-users tr {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        padding: 10px;
+        background: #fff;
+    }
+
+    .admin-users td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    .admin-users td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        font-weight: bold;
+        text-align: left;
+    }
+}
+
+/* ===== Header/Navbar ===== */
+header {
+    background: #222;
+    padding: 15px 0;
+}
+
+.container-fluid {
+    width: 95%;
+    margin: auto;
+}
+
+/* Nav Menu */
+.admin-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+/* Links */
+.admin-nav li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    transition: 0.3s;
+}
+
+.admin-nav li a:hover,
+.admin-nav li a.active {
+    background: #444;
+    border-radius: 5px;
+}
+
+/* ===== Tablet ===== */
+@media (max-width: 768px) {
+    .admin-nav {
+        gap: 15px;
+    }
+
+    .admin-nav li a {
+        font-size: 14px;
+    }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 600px) {
+    .admin-nav {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+
+    .admin-nav li a {
+        justify-content: center;
+        padding: 10px;
+        border-bottom: 1px solid #444;
+    }
+}
+
+/* ===== Section ===== */
+.section-login {
+    padding: 40px 0;
+    background: #f7f7f7;
+}
+
+/* Container Grid */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.grid-two-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+/* ===== Image ===== */
+.register-logo img {
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    margin: auto;
+}
+
+/* ===== Form ===== */
+.register-form {
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.register-form h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form Inputs */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #007bff;
+}
+
+/* Button */
+.btn {
+    width: 100%;
+    padding: 12px;
+    background: #007bff;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background: #0056b3;
+}
+
+/* ===== Tablet ===== */
+@media (max-width: 768px) {
+    .grid-two-cols {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .register-logo img {
+        max-width: 300px;
+    }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 480px) {
+    .section-login {
+        padding: 20px 0;
+    }
+
+    .register-form {
+        padding: 15px;
+    }
+
+    .form-group input {
+        padding: 8px;
+    }
+
+    .btn {
+        font-size: 14px;
     }
 }

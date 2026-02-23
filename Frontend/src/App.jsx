@@ -23,16 +23,15 @@ import AdminUsers from "./Pages/Admin-Users";
 import AdminContacts from "./Pages/Admin-Contacts";
 import AdminUpdate from "./Pages/Admin-Update";
 
-
-
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./App.css";
 import NewProducts from "./Pages/NewProducts";
-import NewServices from "./Pages/NewServices";
+import Process from "./Pages/Process";
 import Electronics from "./Pages/Electronic";
 import Service from "./Pages/Service";
-
+import Cart from "./Pages/Cart";
+import Cloth from "./Pages/Cloth";
 const App = () => {
   const [orderPopup, setOrderPopup] = React.useState(false);
 
@@ -60,7 +59,7 @@ const App = () => {
           element={
             <>
               <Hero />
-             
+
               <Products />
               <TopProducts />
               <Banner />
@@ -80,14 +79,16 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/service" element={<Service />} />
         <Route path="/products" element={<NewProducts />} />
-        <Route path="/services" element={<NewServices />} />
+        <Route path="/process" element={<Process />} />
         <Route path="/electronics" element={<Electronics />} />
-      
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/cloth" element={<Cloth />} />
 
 
 
 
-       
+
+
         <Route path="*" element={<Error />} />
 
 

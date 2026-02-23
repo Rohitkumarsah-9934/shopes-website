@@ -8,8 +8,10 @@ import DarkMode from "./DarkMode";
 const Menu = [
   { id: 1, name: "Home", link: "/" },
   { id: 2, name: "Products", link: "/products" },
-  { id: 3, name: "Services", link: "/services" },
+  { id: 3, name: "Process", link: "/process" },
   { id: 4, name: "Electronics", link: "/electronics" },
+  { id: 5, name: "Cloth", link: "/cloth" },
+
 ];
 
 const Navbar = () => {
@@ -99,7 +101,7 @@ const Navbar = () => {
 
           {/* ICONS */}
           {/* <FaRegHeart className="hidden md:block text-xl cursor-pointer" /> */}
-          <FaShoppingCart className="hidden md:block text-xl cursor-pointer" />
+          {/* <FaShoppingCart className="hidden md:block text-xl cursor-pointer" /> */}
 
           <DarkMode />
 
