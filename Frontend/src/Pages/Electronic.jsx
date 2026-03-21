@@ -40,7 +40,7 @@ const electronicsData = [
     { id: 8, title: "LED Monitor", price: 8999, image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500" },
 ];
 
-const Electronics = () => {
+const Electronic = () => {
     const [cart, setCart] = useState([]);
     const navigate = useNavigate();
 
@@ -178,4 +178,4 @@ const Electronics = () => {
     );
 };
 
-export default Electronics;
+export default Electronic;

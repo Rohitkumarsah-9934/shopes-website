@@ -9,9 +9,6 @@ const adminRoute = require("./router/admin-router");
 const errorMiddleware = require("./middlewares/error-middleware");
 
 const app = express();
-
-
-
 app.use(
     cors({
         origin: process.env.FRONTEND_URI,
@@ -21,14 +18,12 @@ app.use(
 );
 
 
-
 app.use(express.json());
 
 app.use("/api/auth", authRoute);
 app.use("/api/form", contactRoute);
 app.use("/api/data", serviceRoute);
 app.use("/api/admin", adminRoute);
-
 
 
 app.use(errorMiddleware);

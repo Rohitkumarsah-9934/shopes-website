@@ -1,7 +1,9 @@
 import React from "react";
 import footerLogo from "../../assets/logo.png";
 import Banner from "../../assets/website/footer-pattern.jpg";
-import { FaFacebook, FaInstagram, FaLinkedin, FaLocationArrow, FaMobileAlt } from "react-icons/fa";
+import { FaFacebook,  FaGithub, FaLinkedin, FaLocationArrow, FaMobileAlt } from "react-icons/fa";
+import { FaLocationDot } from "react-icons/fa6";
+import {Link} from "react-router-dom";
 
 const BannerImg = {
   backgroundImage: `url(${Banner})`,
@@ -12,10 +14,10 @@ const BannerImg = {
 };
 
 const FooterLinks = [
-  { title: "Home", link: "/#" },
-  { title: "About", link: "/#about" },
-  { title: "Contact", link: "/#contact" },
-  { title: "Login", link: "/#login" },
+  { title: "Home", link: "/" },
+  { title: "Service", link: "/service" },
+  { title: "Contact", link: "/contact" },
+  { title: "Login", link: "/login" },
 ];
 
 const CustomerService = [
@@ -75,9 +77,11 @@ const Footer = () => {
             <h2 className="text-lg font-semibold mb-4 underline">Contact Us</h2>
 
             <div className="flex gap-4 mb-4 text-2xl">
-              <FaInstagram className="cursor-pointer hover:text-orange-400" />
-              <FaFacebook className="cursor-pointer hover:text-orange-400" />
-              <FaLinkedin className="cursor-pointer hover:text-orange-400" />
+              <Link to="https://github.com/arvind538?tab=repositories"><FaGithub  className="cursor-pointer hover:text-orange-400" /></Link>
+              <Link to="https://www.linkedin.com/feed/"><FaLinkedin className="cursor-pointer hover:text-orange-400" /></Link>
+              {/* <FaFacebook className="cursor-pointer hover:text-orange-400" /> */}
+              <Link to="https://maps.app.goo.gl/QRnBRTKxgk5jz5Xj6"><FaLocationDot className="cursor-pointer hover:text-orange-400" /></Link>
+              
             </div>
 
             <div className="text-gray-200 text-sm space-y-2">
@@ -85,7 +89,7 @@ const Footer = () => {
                 <FaLocationArrow /> Jaipur, Rajasthan
               </div>
               <div className="flex items-center gap-2">
-                <FaMobileAlt /> +91 9973000000
+                <FaMobileAlt /> +91 9973215343
               </div>
             </div>
           </div>

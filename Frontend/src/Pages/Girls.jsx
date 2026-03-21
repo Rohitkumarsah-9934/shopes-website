@@ -8,24 +8,25 @@ const products = [
         price: 1299,
         image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=500"
     },
-    {
-        id: 2,
-        title: "Girls Jeans",
-        price: 1699,
-        image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=500"
-    },
-    {
-        id: 3,
-        title: "Girls Top",
-        price: 899,
-        image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500"
-    },
-    {
-        id: 4,
-        title: "Girls Hoodie",
-        price: 1499,
-        image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500"
-    },
+     {
+    id: 3,
+    title: "Girls Hoodie",
+    price: 1499,
+    image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500"
+  },
+  {
+    id: 4,
+    title: "Girls Dress",
+    price: 1899,
+    image: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=500"
+  },
+  
+  {
+    id: 6,
+    title: "Girls Kurti",
+    price: 1299,
+    image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=500"
+  },
     {
         id: 5,
         title: "Girls Saree",

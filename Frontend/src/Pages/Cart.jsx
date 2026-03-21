@@ -1,122 +1,86 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
-const Card = () => {
+const Cart = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const [formData, setFormData] = useState({
-    name: "",
-    description: "",
-    category: "",
-    price: "",
-    offerPrice: "",
-  });
+  // ✅ Get data from previous page
+  const initialCart = location.state || [];
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.id]: e.target.value,
-    });
+  const [cart, setCart] = useState(initialCart);
+
+  
+  // Remove Item
+  const handleRemove = (index) => {
+    const updated = cart.filter((_, i) => i !== index);
+    setCart(updated);
   };
 
-  const handleAdd = (e) => {
-    e.preventDefault();
+  // Total Price
+  const totalPrice = cart.reduce(
+    (total, item) => total + Number(item.price),
+    0
+  );
 
-    // Data send to process page
-    navigate("/process", { state: formData });
-  };
-
-  const handleBack = () => {
-    navigate(-1); // previous page
+  // Go To Payment
+  const handleGoToPayment = () => {
+    navigate("/process", { state: cart });
   };
 
   return (
-    <>
-      <h1 className="mt-4 text-center font-bold text-2xl">
-        Payment Process
+    <div className="max-w-xl mx-auto mt-10">
+
+      <h1 className="text-2xl font-bold text-center mb-6">
+        My Cart 🛒
       </h1>
 
-      <div className="flex justify-center">
-        <div className="py-5 bg-white shadow-xl rounded-xl">
-          <form
-            onSubmit={handleAdd}
-            className="md:p-10 p-4 space-y-5 max-w-lg"
+      {/* ✅ Cart Items */}
+      {cart.length === 0 ? (
+        <p className="text-center">No products in cart</p>
+      ) : (
+        <>
+          <div className="space-y-4 mb-4">
+            {cart.map((product, index) => (
+              <div
+                key={index}
+                className="border p-4 rounded shadow flex justify-between items-center bg-white"
+              >
+                <div>
+                  <p className="font-bold">{product.title || product.name}</p>
+                  <p className="text-gray-600">{product.category}</p>
+                </div>
+
+                <div className="text-right">
+                  <p className="font-semibold">₹{product.price}</p>
+
+                  <button
+                    onClick={() => handleRemove(index)}
+                    className="text-red-500 text-sm mt-1"
+                  >
+                    Remove
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* ✅ Total */}
+          <div className="text-right font-bold text-lg mb-4">
+            Total: ₹{totalPrice}
+          </div>
+
+          {/* ✅ Go To Payment */}
+          <button
+            onClick={handleGoToPayment}
+            className="w-full bg-green-600 text-white px-4 py-2 rounded"
           >
-            <div className="flex flex-col gap-1">
-              <label>Product Name</label>
-              <input
-                id="name"
-                type="text"
-                onChange={handleChange}
-                className="py-2 px-3 border rounded"
-                required
-              />
-            </div>
-
-            <div className="flex flex-col gap-1">
-              <label>Description</label>
-              <textarea
-                id="description"
-                onChange={handleChange}
-                className="py-2 px-3 border rounded"
-              />
-            </div>
-
-            <div className="flex flex-col gap-1">
-              <label>Category</label>
-              <select
-                id="category"
-                onChange={handleChange}
-                className="py-2 px-3 border rounded"
-              >
-                <option value="">Select</option>
-                <option>For Mens</option>
-                <option>For Gilrs</option>
-                <option>Electronics</option>
-                <option>Clothing</option>
-                <option>Accessories</option>
-              </select>
-            </div>
-
-            <div className="flex gap-4">
-              <input
-                id="price"
-                type="number"
-                placeholder="Price"
-                onChange={handleChange}
-                className="py-2 px-3 border rounded w-1/2"
-              />
-
-              <input
-                id="offerPrice"
-                type="number"
-                placeholder="Offer Price"
-                onChange={handleChange}
-                className="py-2 px-3 border rounded w-1/2"
-              />
-            </div>
-
-            <div className="flex gap-4">
-              <button
-                type="submit"
-                className="w-full py-2 bg-indigo-600 text-white rounded"
-              >
-                ADD
-              </button>
-
-              <button
-                type="button"
-                onClick={handleBack}
-                className="w-full py-2 bg-red-500 text-white rounded"
-              >
-                Back
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </>
+            Go to Payment
+          </button>
+        </>
+      )}
+    </div>
   );
 };
 
-export default Card;
+export default Cart;

@@ -12,7 +12,7 @@ const Menu = [
   { id: 4, name: "Cloths", link: "/cloths" },
   { id: 5, name: "For Mens", link: "/mens" },
   { id: 6, name: "For Girls", link: "/girls" },
-  { id: 7, name: "Process", link: "/process" },
+  // { id: 7, name: "Payment Process", link: "/process" }
   
 ];
 

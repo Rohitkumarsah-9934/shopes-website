@@ -37,6 +37,7 @@ import Girls from "./Pages/Girls";
 import ClaimNow from "./Pages/ClaimNow";
 
 
+
 const App = () => {
   const [orderPopup, setOrderPopup] = React.useState(false);
 
@@ -86,11 +87,13 @@ const App = () => {
         <Route path="/products" element={<NewProducts />} />
         <Route path="/process" element={<Process />} />
         <Route path="/electronics" element={<Electronics />} />
-        <Route path="/cart" element={<Cart />} /> 
         <Route path="/cloths" element={<Cloths />} />
         <Route path="/mens" element={<Mens />} />
         <Route path="/girls" element={<Girls />} />
         <Route path="/claim-now" element={<ClaimNow />} />
+        <Route path="/cart" element={<Cart/>} />
+       
+
 
         <Route path="*" element={<Error />} />
 

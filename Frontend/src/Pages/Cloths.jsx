@@ -2,15 +2,47 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const clothesData = [
-    { id: 1, title: "Men T-Shirt", price: 799, image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500" },
-    { id: 2, title: "Women Kurti", price: 1299, image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=500" },
-    { id: 4, title: "Formal Shirt", price: 1499, image: "https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?w=500" },
-    { id: 5, title: "Jeans", price: 1799, image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=500" },
-    { id: 6, title: "Hoodie", price: 1599, image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500" },
-    { id: 7, title: "Saree", price: 2499, image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=500" },
-    { id: 8, title: "Blazer", price: 2999, image: "https://images.unsplash.com/photo-1592878904946-b3cd8ae243d0?w=500" },
-    { id: 10, title: "Kids Wear", price: 699, image: "https://images.unsplash.com/photo-1603252109303-2751441dd157?w=500" },
+  
+  { id: 1, title: "Men T-Shirt", price: 799, image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500" },
+
+  { id: 2, title: "Casual Shirt", price: 1199, image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500" },
+
+  { id: 3, title: "Jeans", price: 1799, image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=500" },
+
+  { id: 4, title: "Denim Jacket", price: 2499, image: "https://images.unsplash.com/photo-1520975916090-3105956dac38?w=500" },
+
+  { id: 5, title: "Hoodie", price: 1599, image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500" },
+
+  { id: 6, title: "Blazer", price: 2999, image: "https://images.unsplash.com/photo-1592878904946-b3cd8ae243d0?w=500" },
+
+  { id: 7, title: "Track Pants", price: 999, image: "https://images.unsplash.com/photo-1599058917765-a780eda07a3e?w=500" },
+
+ { id: 1, title: "Oversized Graphic Tee", price: 1299, category: "men", image: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=500" },
+
+  {
+    id: 1,
+    title: "Casual T-Shirt",
+    price: 999,
+    category: "men",
+    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500"
+  },
+
+  { id: 3, title: "Cargo Utility Pants", price: 1799, category: "men", image: "https://images.unsplash.com/photo-1584865288642-42078afe6942?w=500" },
+
+  { id: 4, title: "Printed Co-Ord Set", price: 2499, category: "boys", image: "https://images.unsplash.com/photo-1622470953794-aa9c70b0fb9d?w=500" },
+
+  { id: 5, title: "Denim Patchwork Jacket", price: 2999, category: "men", image: "https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=500" },
+
+  { id: 6, title: "Neon Streetwear Jacket", price: 2799, category: "boys", image: "https://images.unsplash.com/photo-1544441893-675973e31985?w=500" },
+
+  { id: 7, title: "Asymmetrical Kurta", price: 1599, category: "men", image: "https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?w=500" },
+
+  { id: 8, title: "Reflective Sports Tracksuit", price: 2199, category: "boys", image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500" },
+
+  { id: 9, title: "Printed Beach Shirt", price: 1199, category: "men", image: "https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=500" }
+
 ];
+
 
 const Cloths = () => {
     const [cart, setCart] = useState([]);
