@@ -6,7 +6,7 @@ const authRoute = require("./Router/auth-router");
 const contactRoute = require("./Router/contact-router");
 const serviceRoute = require("./Router/service-router");
 const adminRoute = require("./Router/admin-router");
-const errorMiddleware = require("./middlewares/error-middleware");
+const errorMiddleware = require("./Middlewares/error-middleware");
 
 const app = express();
 app.use(
